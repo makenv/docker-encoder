@@ -1,0 +1,13 @@
+sudo: required
+
+language: bash
+services: docker
+
+before_install:
+- docker version
+- docker info
+- docker pull fedora:26
+- docker build -t makenv/docker-encoder .
+
+script:
+- echo "OK"
