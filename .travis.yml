@@ -3,7 +3,14 @@ sudo: required
 language: bash
 services: docker
 
+
 before_install:
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+- sudo apt-get update
+- sudo apt-get -y install docker-ce
+
+before_script:
 - docker version
 - docker info
 - docker pull fedora:26
@@ -14,3 +21,6 @@ script:
 - docker run --rm makenv/encoder /bin/bash -c 'echo $BASE_VERSION'
 - docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
 - docker push makenv/encoder
+
+after_script:
+- docker images
