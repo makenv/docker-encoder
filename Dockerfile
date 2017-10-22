@@ -11,5 +11,9 @@ dnf update -y && \
 dnf autoremove -y && \
 dnf clean all
 
+RUN mkdir /ws /w /o /is
+
+VOLUME ['/ws', '/w', '/o', '/is']
+
 
 #ENTRYPOINT ["/bin/bash"]
