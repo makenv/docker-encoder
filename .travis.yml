@@ -10,7 +10,7 @@ before_install:
 
 script:
 - docker build -t makenv/encoder .
-- docker run --rm fedora:26 /bin/bash ls
-- docker run --rm makenv/encoder /bin/bash ls
+- docker run --rm fedora:26 /bin/bash -c 'echo $BASE_VERSION'
+- docker run --rm makenv/encoder /bin/bash -c 'echo $BASE_VERSION'
 - docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
 - docker push makenv/encoder
