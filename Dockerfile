@@ -7,8 +7,9 @@ dnf install -y \
   https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-26.noarch.rpm && \
 dnf update -y && \
 dnf install -y openssh-server openssh-clients && \
-dnf install -y ffmpeg handbrake mplayer mencoder && \
 dnf autoremove -y && \
 dnf clean all
+
+#dnf install -y ffmpeg handbrake mplayer mencoder && \
 
 ENTRYPOINT ["/bin/bash"]
